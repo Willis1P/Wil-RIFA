@@ -1,14 +1,12 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, ShoppingCart, User, MessageCircle } from 'lucide-react';
-import { useUser } from '../../contexts/UserContext';
+import { Menu, X, ShoppingCart, MessageCircle } from 'lucide-react';
 import { useRaffle } from '../../contexts/RaffleContext';
 import Logo from '../ui/Logo';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const { isAuthenticated, user } = useUser();
   const { totalTickets } = useRaffle();
   const location = useLocation();
 
@@ -68,23 +66,6 @@ const Header = () => {
               Meus Bilhetes
             </Link>
             
-            {isAuthenticated ? (
-              <Link
-                to="/conta"
-                className="flex items-center font-medium text-black hover:text-gray-800"
-              >
-                <User size={18} className="mr-1" />
-                {user?.name.split(' ')[0]}
-              </Link>
-            ) : (
-              <Link
-                to="/login"
-                className="font-medium text-black hover:text-gray-800"
-              >
-                Entrar
-              </Link>
-            )}
-            
             <a
               href="https://wa.me/SEUNUMEROAQUI"
               target="_blank"
@@ -139,23 +120,6 @@ const Header = () => {
             >
               Meus Bilhetes
             </Link>
-            
-            {isAuthenticated ? (
-              <Link
-                to="/conta"
-                className="flex items-center font-medium text-gray-800 hover:text-black py-2 px-4 rounded-lg hover:bg-gray-200 transition-all"
-              >
-                <User size={18} className="mr-1" />
-                {user?.name.split(' ')[0]}
-              </Link>
-            ) : (
-              <Link
-                to="/login"
-                className="font-medium text-gray-800 hover:text-black py-2 px-4 rounded-lg hover:bg-gray-200 transition-all"
-              >
-                Entrar
-              </Link>
-            )}
 
             <a
               href="https://wa.me/SEUNUMEROAQUI"
